@@ -22,12 +22,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int players = scanner.nextInt();
         Deque<Player> playerList = new LinkedList<>();
+        Set<String> symbols = new HashSet<>();
         for ( int i = 0; i < players; i++ ) {
             System.out.println( "Enter Player " + (i + 1) + " name and symbol(Xyz X) " );
             String name = scanner.next();
             String symbol = scanner.next();
+            if( symbols.contains( symbol ) ) {
+                System.out.println( "Symbol " + symbol + " already exists" );
+                i--;
+                continue;
+            }
             try {
                 SymbolType symbolType = SymbolType.valueOf( symbol.toUpperCase() );
+                symbols.add( symbol );
             }catch (Exception e) {
                 System.out.println( "Invalid symbol please try again with below listed symbol, please try again" );
                 Arrays.stream( SymbolType.values() ).forEach( x -> System.out.print( x.name()+" " ) );
