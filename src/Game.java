@@ -38,7 +38,7 @@ public class Game {
                 players.addFirst(player);
                 continue;
             }
-
+            // add the input if the given coordinate is empty
             boolean symbolAddedSuccessfully = board.addPlayingSymbol( player.getPlayingSymbol(), x, y );
             if(!symbolAddedSuccessfully){
                 System.out.println("Place is already occupied, please try again");
@@ -127,7 +127,7 @@ public class Game {
             }
             antiDiagMatchCount++;
         }
-        // checking diagonal up
+        // checking anti diagonal up
         for(int i=x-1, j=y+1; i >= 0 && j < board.getSize(); i--, j++){
             if(board.getPlayingBoard()[i][j]==null || board.getPlayingBoard()[i][j]!=player.getPlayingSymbol()){
                 break;
